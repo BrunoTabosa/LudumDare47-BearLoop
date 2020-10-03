@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float movementSpeed;
+    public float rotateSpeed;
     public PlayerState state;
     
     [SerializeField]
@@ -31,17 +32,19 @@ public class Player : MonoBehaviour
     {
         if (state == PlayerState.Dead) return;
 
-        horizontal = Input.GetAxis("Horizontal") * movementSpeed;
+        horizontal = Input.GetAxis("Horizontal") * rotateSpeed;
         vertical = Input.GetAxis("Vertical") * movementSpeed;
 
+        transform.Rotate(new Vector3(0, horizontal, 0));
 
-        characterController.SimpleMove(new Vector3(horizontal, 0, vertical));
-
+        characterController.SimpleMove(transform.TransformDirection(Vector3.forward) * vertical);
+        
     }
 
     public void Die()
     {
         //characterController.enabled = false;
         state = PlayerState.Dead;
+        
     }
 }
