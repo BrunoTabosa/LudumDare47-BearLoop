@@ -5,10 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float movementSpeed;
-
+    public PlayerState state;
+    
     [SerializeField]
     private CharacterController characterController;
-
 
     private float horizontal, vertical;
 
@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
+        if (state == PlayerState.Dead) return;
+
         horizontal = Input.GetAxis("Horizontal") * movementSpeed;
         vertical = Input.GetAxis("Vertical") * movementSpeed;
 
@@ -37,7 +39,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        characterController.enabled = false;
-        this.enabled = false;
+        //characterController.enabled = false;
+        state = PlayerState.Dead;
     }
 }
