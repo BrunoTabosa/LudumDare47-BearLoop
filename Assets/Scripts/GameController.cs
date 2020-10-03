@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
             currentLifeSpan -= Time.deltaTime;
             timeSpan = TimeSpan.FromSeconds(currentLifeSpan);
             timer.text = timeSpan.ToString(@"mm\:ss");
+
             if(currentLifeSpan <= 0)
             {
                 currentLifeSpan = 0;
