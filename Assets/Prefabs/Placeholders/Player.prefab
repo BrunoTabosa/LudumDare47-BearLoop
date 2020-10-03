@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  rotateSpeed: 5
   state: 0
   characterController: {fileID: 3448460386000883504}
 --- !u!1 &3448460386852840991
