@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeightButton : MonoBehaviour
+public class WeightButton : MonoBehaviour, IInteractor
 {
-    public ButtonState state;
+    private ButtonState state;
+    [SerializeField]
+    private List<GameObject> InteractablesObjects;
+
+    public List<IInteractable> Interactables { get; set; }
 
     [SerializeField]
     private Renderer renderer;
@@ -13,6 +17,31 @@ public class WeightButton : MonoBehaviour
     private Material unpressedMaterial;
     [SerializeField]
     private Material pressedMaterial;
+
+    public void Start()
+    {
+        Interactables = new List<IInteractable>();
+        foreach (var item in InteractablesObjects)
+        {
+            Interactables.Add(item.GetComponent<IInteractable>());
+        }   
+    }
+
+    public void Interact()
+    {
+        foreach (var interactable in Interactables)
+        {
+            interactable.Interact();
+        }
+    }
+
+    public void CancelInteraction()
+    {
+        foreach (var interactable in Interactables)
+        {
+            interactable.CancelInteraction();
+        }
+    }
 
     void OnTriggerEnter(Collider collider)
     {
@@ -30,9 +59,18 @@ public class WeightButton : MonoBehaviour
 
     private void SetState(ButtonState newState)
     {
+        if (state == ButtonState.Unpressed && newState == ButtonState.Pressed)
+        {
+            Interact();
+        }
+        else if(state == ButtonState.Pressed && newState == ButtonState.Unpressed)
+        {
+            CancelInteraction();
+        }
+
         state = newState;
-        print($"Button State: {state}");
-        switch(state)
+
+        switch (state)
         {
             case ButtonState.Unpressed:
                 renderer.material = unpressedMaterial;
