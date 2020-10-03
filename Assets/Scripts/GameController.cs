@@ -1,36 +1,63 @@
 ﻿using System.Collections;
 using UnityEngine;
-public class GameController : MonoBehaviour
+using BearLoopGame.Utils;
+using UnityEngine.Events;
+
+public class GameController : Singleton<GameController>
 {
-	public Transform RespawnPoint;
-	public Player playerPrefab;
-    public CameraController cameraController;
+    [Header("GameController Attributes")]
+    public Transform RespawnPoint;
+    public Player playerPrefab;
+    public Player currentPlayer;
+    [SerializeField]
+    private float _respawnTime = 3.5f;
 
+    public delegate void OnPlayerSpawnsEvent(Transform player);
+    public OnPlayerSpawnsEvent OnPlayerSpawns;
 
+    public delegate void OnPlayerDiesEvent(Transform player);
+    public OnPlayerDiesEvent OnPlayerDies;
 
-	public Player currentPlayer;
-
+    private void Awake()
+    {
+        InitSingleton();
+    }
 
     private void Start()
     {
-        if(currentPlayer == null)
-            currentPlayer = Instantiate(playerPrefab, RespawnPoint.position, Quaternion.identity);
-
-        cameraController.Follow(currentPlayer);
+        if (currentPlayer != null)
+        {
+            Destroy(currentPlayer.gameObject);
+        }
+        SpawnPlayer();
     }
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(Respawn());
         }
     }
     public IEnumerator Respawn()
     {
-        currentPlayer?.Die();
-        yield return new WaitForSeconds(1.5f);
+        if (currentPlayer)
+        {
+            currentPlayer.Die();
+            OnPlayerDies?.Invoke(currentPlayer.transform);
+        }
+
+        yield return new WaitForSeconds(_respawnTime);
+        SpawnPlayer();
+
+    }
+    protected override void InitSingleton()
+    {
+        base.InitSingleton();
+    }
+    private void SpawnPlayer()
+    {
         currentPlayer = Instantiate(playerPrefab, RespawnPoint.position, Quaternion.identity);
-        cameraController.Follow(currentPlayer);
+        OnPlayerSpawns?.Invoke(currentPlayer.transform);
     }
 }
