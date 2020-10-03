@@ -1,0 +1,24 @@
+﻿using BearLoopGame.Utils;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System;
+
+public class UIController : Singleton<UIController>
+{
+    public TextMeshProUGUI timer;
+    private TimeSpan timeSpan;
+
+    protected override void InitSingleton()
+    {
+        base.InitSingleton();
+    }
+
+    public void UpdateTimer(float time)
+    {
+        timeSpan = TimeSpan.FromSeconds(time);
+        timer.text = timeSpan.ToString(@"mm\:ss");
+    }
+}

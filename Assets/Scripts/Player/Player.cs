@@ -34,7 +34,9 @@ public class Player : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal") * movementSpeed;
         vertical = Input.GetAxis("Vertical") * movementSpeed;
 
+
         characterController.SimpleMove(new Vector3(horizontal, 0, vertical));
+
     }
 
     public void Die()

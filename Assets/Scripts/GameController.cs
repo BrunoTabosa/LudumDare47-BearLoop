@@ -2,6 +2,8 @@
 using UnityEngine;
 using BearLoopGame.Utils;
 using UnityEngine.Events;
+using System;
+using JetBrains.Annotations;
 
 public class GameController : Singleton<GameController>
 {
@@ -17,6 +19,12 @@ public class GameController : Singleton<GameController>
 
     public delegate void OnPlayerDiesEvent(Transform player);
     public OnPlayerDiesEvent OnPlayerDies;
+
+    private bool PlayerIsAlive = false;
+    
+    private float currentLifeSpan = 60f;
+    public float lifeSpan = 60f;
+
 
     private void Awake()
     {
@@ -36,13 +44,20 @@ public class GameController : Singleton<GameController>
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(Respawn());
+            Respawn();
         }
+        HandleLifeSpan();
     }
-    public IEnumerator Respawn()
+
+    public void Respawn()
+    {
+        PlayerIsAlive = false;
+        StartCoroutine(Respawn_Coroutine());
+    }
+    public IEnumerator Respawn_Coroutine()
     {
         if (currentPlayer)
-        {
+        {            
             currentPlayer.Die();
             OnPlayerDies?.Invoke(currentPlayer.transform);
         }
@@ -58,6 +73,22 @@ public class GameController : Singleton<GameController>
     private void SpawnPlayer()
     {
         currentPlayer = Instantiate(playerPrefab, RespawnPoint.position, Quaternion.identity);
+        PlayerIsAlive = true;
         OnPlayerSpawns?.Invoke(currentPlayer.transform);
     }
+
+    public void HandleLifeSpan()
+    {
+        if (PlayerIsAlive)
+        {
+            currentLifeSpan -= Time.deltaTime;          
+            UIController.Instance.UpdateTimer(currentLifeSpan);
+            if (currentLifeSpan <= 0)
+            {
+                currentLifeSpan = 0;
+                Respawn();
+            }
+        }
+    }
 }
+
