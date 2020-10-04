@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private BaseInteractionObject _interactionObject;
 
+    private bool _isInteracting;
+
     public BaseInteractionObject InteractionObject { set => _interactionObject = value; }
 
     void Awake()
@@ -34,7 +36,7 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
-        if (state == PlayerState.Dead) return;
+        if (state == PlayerState.Dead || _isInteracting == true) return;
 
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Vertical")));
 
@@ -49,17 +51,27 @@ public class Player : MonoBehaviour
         {
             if (_interactionObject != null)
             {
-                _interactionObject.Interact();
+                animator.SetTrigger("isInteracting");
+                transform.LookAt(_interactionObject.transform);
             }
         }
 
+    }
+
+    private void SetInteract()
+    {
+        _isInteracting = !_isInteracting;
+        if (_isInteracting == false)
+        {
+            _interactionObject.Interact();
+        }
     }
 
     public void Die()
     {
         state = PlayerState.Dead;
         Destroy(gameObject);
-        
+
     }
 
 }
