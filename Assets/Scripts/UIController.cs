@@ -10,6 +10,7 @@ public class UIController : Singleton<UIController>
 {
     public TextMeshProUGUI timer;
     private TimeSpan timeSpan;
+    public UINumpad numpad;
 
     protected override void InitSingleton()
     {
@@ -20,5 +21,10 @@ public class UIController : Singleton<UIController>
     {
         timeSpan = TimeSpan.FromSeconds(time);
         timer.text = timeSpan.ToString(@"mm\:ss");
+    }
+
+    public void NumpadToggle(bool value)
+    {
+        numpad.SetEnabled(value);
     }
 }

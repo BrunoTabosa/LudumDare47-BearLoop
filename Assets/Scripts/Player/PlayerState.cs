@@ -9,3 +9,9 @@ public enum ButtonState
     Unpressed,
     Pressed
 }
+
+public enum WaterState
+{
+    Low,
+    High
+}

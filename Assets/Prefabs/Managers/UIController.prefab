@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dontDestroyOnLoad: 1
   timer: {fileID: 0}
+  numpad: {fileID: 0}

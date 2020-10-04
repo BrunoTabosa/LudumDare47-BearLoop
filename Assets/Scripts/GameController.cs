@@ -26,6 +26,8 @@ public class GameController : Singleton<GameController>
     private float currentLifeSpan;
     public float lifeSpan = 60f;
 
+    private int code = 123;
+
 
     private void Awake()
     {
@@ -101,6 +103,13 @@ public class GameController : Singleton<GameController>
         ragdoll.head.velocity = currentPlayer.GetComponent<CharacterController>().velocity;
         currentPlayer.Die();
         Respawn();
+    }
+    public void EnterCode(string value)
+    {
+        if(value == code.ToString())
+        {
+            
+        }
     }
 }
 

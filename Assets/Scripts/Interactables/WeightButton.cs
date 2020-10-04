@@ -8,6 +8,7 @@ public class WeightButton : MonoBehaviour, IInteractor
     public AnimationClip Pressed;
     public AnimationClip Unpressed;
     private ButtonState state = ButtonState.Unpressed;
+
     [SerializeField]
     private List<GameObject> InteractablesObjects;
 
@@ -19,13 +20,16 @@ public class WeightButton : MonoBehaviour, IInteractor
         foreach (var item in InteractablesObjects)
         {
             Interactables.Add(item.GetComponent<IInteractable>());
-        }   
+        }
     }
 
     public void Interact()
     {
-        animation.clip = Pressed;
-        animation.Play();
+        if (Pressed != null)
+        {
+            animation.clip = Pressed;
+            animation.Play();
+        }
         foreach (var interactable in Interactables)
         {
             interactable.Interact();
@@ -34,8 +38,11 @@ public class WeightButton : MonoBehaviour, IInteractor
 
     public void CancelInteraction()
     {
-        animation.clip = Unpressed;
-        animation.Play();
+        if (Unpressed != null)
+        {
+            animation.clip = Unpressed;
+            animation.Play();
+        }
 
         foreach (var interactable in Interactables)
         {
@@ -46,25 +53,25 @@ public class WeightButton : MonoBehaviour, IInteractor
     void OnTriggerEnter(Collider collider)
     {
         //SetState(ButtonState.Pressed);
-       
+
     }
     void OnTriggerExit(Collider collider)
     {
-        SetState(ButtonState.Unpressed);        
+        SetState(ButtonState.Unpressed);
     }
 
     void OnTriggerStay(Collider other)
     {
         SetState(ButtonState.Pressed);
     }
-  
+
     private void SetState(ButtonState newState)
     {
         if (state == ButtonState.Unpressed && newState == ButtonState.Pressed)
         {
             Interact();
         }
-        else if(state == ButtonState.Pressed && newState == ButtonState.Unpressed)
+        else if (state == ButtonState.Pressed && newState == ButtonState.Unpressed)
         {
             CancelInteraction();
         }
