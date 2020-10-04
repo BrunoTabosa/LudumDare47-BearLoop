@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     {
         state = PlayerState.Dead;
         Destroy(gameObject);
-
+        
     }
 
 }
