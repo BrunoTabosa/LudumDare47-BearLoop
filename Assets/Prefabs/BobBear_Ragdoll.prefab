@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8132058333796831825}
   - component: {fileID: 6018111240459208356}
-  - component: {fileID: 6018111240459208026}
   - component: {fileID: 6018111240459208027}
   m_Layer: 0
   m_Name: L_Leg
@@ -50,20 +49,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &6018111240459208026
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 204368042277219047}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.12
-  m_Height: 0.1
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!144 &6018111240459208027
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1371,6 +1356,7 @@ GameObject:
   - component: {fileID: 6056806263721048636}
   - component: {fileID: 211165470249312326}
   - component: {fileID: -3173387627315023163}
+  - component: {fileID: 686221157070799170}
   m_Layer: 0
   m_Name: BobBear_Ragdoll
   m_TagString: Untagged
@@ -1427,6 +1413,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 6018111240363471853}
   root: {fileID: 6018111240397163774}
+--- !u!136 &686221157070799170
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865114862822121606}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.6
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.65, z: 0}
 --- !u!1 &7163505300002686852
 GameObject:
   m_ObjectHideFlags: 0
