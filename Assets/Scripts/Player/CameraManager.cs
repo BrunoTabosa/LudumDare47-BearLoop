@@ -6,7 +6,6 @@ using UnityEngine.Timeline;
 using Cinemachine;
 using UnityEngine.Playables;
 
-[RequireComponent(typeof(DirectorControlPlayable))]
 public class CameraManager : Singleton<CameraManager>
 {
     public enum CameraAnimationType
