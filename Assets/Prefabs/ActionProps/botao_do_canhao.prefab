@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 4de510d48d4f7b341b3b5ed814f2092e, type: 3}
+  - {fileID: 2100000, guid: c2e1105b93b3da44f839dc32fee80768, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3082467270295431866}
   - component: {fileID: 4397353850660030491}
   m_Layer: 0
-  m_Name: botao_do_canhao (2)
+  m_Name: botao_do_canhao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 4de510d48d4f7b341b3b5ed814f2092e, type: 3}
+  - {fileID: 2100000, guid: 80dd998ba84a3cc41aff9888a6b5e960, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
