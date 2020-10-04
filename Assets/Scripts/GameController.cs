@@ -21,14 +21,18 @@ public class GameController : Singleton<GameController>
     public OnPlayerDiesEvent OnPlayerDies;
 
     private bool PlayerIsAlive = false;
-    
-    private float currentLifeSpan = 60f;
+
+    private float currentLifeSpan;
     public float lifeSpan = 60f;
 
 
     private void Awake()
     {
         InitSingleton();
+    }
+    protected override void InitSingleton()
+    {
+        base.InitSingleton();
     }
 
     private void Start()
@@ -44,21 +48,19 @@ public class GameController : Singleton<GameController>
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Respawn();
+            OnPlayerDeath();
         }
         HandleLifeSpan();
     }
 
     public void Respawn()
     {
-        PlayerIsAlive = false;
         StartCoroutine(Respawn_Coroutine());
     }
     public IEnumerator Respawn_Coroutine()
     {
         if (currentPlayer)
-        {            
-            currentPlayer.Die();
+        {
             OnPlayerDies?.Invoke(currentPlayer.transform);
         }
 
@@ -66,14 +68,12 @@ public class GameController : Singleton<GameController>
         SpawnPlayer();
 
     }
-    protected override void InitSingleton()
-    {
-        base.InitSingleton();
-    }
+
     private void SpawnPlayer()
     {
         currentPlayer = Instantiate(playerPrefab, RespawnPoint.position, Quaternion.identity);
         PlayerIsAlive = true;
+        currentLifeSpan = lifeSpan;
         OnPlayerSpawns?.Invoke(currentPlayer.transform);
     }
 
@@ -81,14 +81,22 @@ public class GameController : Singleton<GameController>
     {
         if (PlayerIsAlive)
         {
-            currentLifeSpan -= Time.deltaTime;          
+            currentLifeSpan -= Time.deltaTime;
             UIController.Instance.UpdateTimer(currentLifeSpan);
+
             if (currentLifeSpan <= 0)
             {
                 currentLifeSpan = 0;
-                Respawn();
+                OnPlayerDeath();
             }
         }
+    }
+
+    public void OnPlayerDeath()
+    {
+        PlayerIsAlive = false;
+        currentPlayer.Die();
+        Respawn();
     }
 }
 
