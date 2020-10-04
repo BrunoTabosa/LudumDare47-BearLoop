@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     {
         //characterController.enabled = false;
         state = PlayerState.Dead;
-        
+        //GameController.Instance.OnPlayerDeath();
     }
+
 }
