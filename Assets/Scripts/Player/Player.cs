@@ -7,17 +7,21 @@ public class Player : MonoBehaviour
     public float movementSpeed;
     public float rotateSpeed;
     public PlayerState state;
-    
+
     [SerializeField]
     private CharacterController characterController;
 
     private Animator animator;
 
     private float horizontal, vertical;
-   
+    [SerializeField]
+    private BaseInteractionObject _interactionObject;
+
+    public BaseInteractionObject InteractionObject { set => _interactionObject = value; }
+
     void Awake()
     {
-        animator = GetComponent<Animator>();     
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,7 +30,7 @@ public class Player : MonoBehaviour
         HandleInput();
     }
 
-    
+
 
     void HandleInput()
     {
@@ -40,13 +44,22 @@ public class Player : MonoBehaviour
         transform.Rotate(new Vector3(0, horizontal, 0));
 
         characterController.SimpleMove(transform.TransformDirection(Vector3.forward) * vertical);
-        
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (_interactionObject != null)
+            {
+                _interactionObject.Interact();
+            }
+        }
+
     }
 
     public void Die()
     {
         state = PlayerState.Dead;
         Destroy(gameObject);
-        
+
     }
+
 }

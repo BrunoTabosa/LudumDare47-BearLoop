@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6018111240459208027}
   m_Layer: 0
   m_Name: L_Leg
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 3607301343434715894}
   m_Layer: 0
   m_Name: Bob_Model
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 6018111240155959720}
   m_Layer: 0
   m_Name: Pelvis
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 6018111240397163774}
   m_Layer: 0
   m_Name: Root
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 6018111240363471854}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 6018111239652253628}
   m_Layer: 0
   m_Name: R_Knee
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 6018111241179645845}
   m_Layer: 0
   m_Name: R_Foot
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 6018111239789008565}
   m_Layer: 0
   m_Name: L_Foot
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -815,7 +815,7 @@ GameObject:
   - component: {fileID: 6018111239651123628}
   m_Layer: 0
   m_Name: L_Knee
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 6018111239979927796}
   m_Layer: 0
   m_Name: Spine02
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 3938781957047047444}
   m_Layer: 0
   m_Name: L_Toe_End
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1063,7 +1063,7 @@ GameObject:
   - component: {fileID: 6018111241402315988}
   m_Layer: 0
   m_Name: R_Ear
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 3425989803949833205}
   m_Layer: 0
   m_Name: TopHead
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1200,7 +1200,7 @@ GameObject:
   - component: {fileID: 1455334243332924659}
   m_Layer: 0
   m_Name: Spine01
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1231,7 +1231,7 @@ GameObject:
   - component: {fileID: 4794854572168511545}
   m_Layer: 0
   m_Name: L_Toe
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 6018111240307776514}
   m_Layer: 0
   m_Name: R_Leg
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1369,11 +1369,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6056806263721048636}
-  - component: {fileID: 211165470249312326}
   - component: {fileID: -3173387627315023163}
+  - component: {fileID: 5656732260515294230}
   m_Layer: 0
   m_Name: BobBear_Ragdoll
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1394,25 +1394,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!95 &211165470249312326
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6865114862822121606}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: 9221331a81baad64d8b348df60eb451e, type: 3}
-  m_Controller: {fileID: 9100000, guid: d07ab0f8e9618b7499fa2e11f185536a, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-3173387627315023163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,6 +1408,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 6018111240363471853}
   root: {fileID: 6018111240397163774}
+--- !u!136 &5656732260515294230
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865114862822121606}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.31964886
+  m_Height: 1.523463
+  m_Direction: 1
+  m_Center: {x: -0.00871253, y: 0.57367504, z: 0.02000001}
 --- !u!1 &7163505300002686852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1433,7 @@ GameObject:
   - component: {fileID: 5066942885427851381}
   m_Layer: 0
   m_Name: R_Toe_End
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1468,7 +1463,7 @@ GameObject:
   - component: {fileID: 3711076372382242236}
   m_Layer: 0
   m_Name: R_Toe
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1502,7 +1497,7 @@ GameObject:
   - component: {fileID: 6018111241402041244}
   m_Layer: 0
   m_Name: L_Ear
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
