@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class WeightButton : MonoBehaviour, IInteractor
 {
-    private ButtonState state;
+    public Animation animation;
+    public AnimationClip Pressed;
+    public AnimationClip Unpressed;
+    private ButtonState state = ButtonState.Unpressed;
     [SerializeField]
     private List<GameObject> InteractablesObjects;
 
     public List<IInteractable> Interactables { get; set; }
-
-    [SerializeField]
-    private Renderer renderer;
-
-    [SerializeField]
-    private Material unpressedMaterial;
-    [SerializeField]
-    private Material pressedMaterial;
 
     public void Start()
     {
@@ -29,6 +24,8 @@ public class WeightButton : MonoBehaviour, IInteractor
 
     public void Interact()
     {
+        animation.clip = Pressed;
+        animation.Play();
         foreach (var interactable in Interactables)
         {
             interactable.Interact();
@@ -37,6 +34,9 @@ public class WeightButton : MonoBehaviour, IInteractor
 
     public void CancelInteraction()
     {
+        animation.clip = Unpressed;
+        animation.Play();
+
         foreach (var interactable in Interactables)
         {
             interactable.CancelInteraction();
@@ -46,17 +46,18 @@ public class WeightButton : MonoBehaviour, IInteractor
     void OnTriggerEnter(Collider collider)
     {
         //SetState(ButtonState.Pressed);
+       
     }
     void OnTriggerExit(Collider collider)
     {
-        SetState(ButtonState.Unpressed);
+        SetState(ButtonState.Unpressed);        
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         SetState(ButtonState.Pressed);
     }
-
+  
     private void SetState(ButtonState newState)
     {
         if (state == ButtonState.Unpressed && newState == ButtonState.Pressed)
@@ -69,15 +70,5 @@ public class WeightButton : MonoBehaviour, IInteractor
         }
 
         state = newState;
-
-        switch (state)
-        {
-            case ButtonState.Unpressed:
-                renderer.material = unpressedMaterial;
-                break;
-            case ButtonState.Pressed:
-                renderer.material = pressedMaterial;
-                break;
-        }
     }
 }

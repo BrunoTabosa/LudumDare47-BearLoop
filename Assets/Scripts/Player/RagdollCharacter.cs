@@ -15,12 +15,8 @@ public class RagdollCharacter : MonoBehaviour
     public void Update()
     {
         //FOR TESTS ONLY
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    AddForceOnRoot(Vector3.down * 20);
-        //}
-
-        if(root.transform.position.y <= -15)
+        
+        if (root.transform.position.y <= -15)
         {
             Destroy(gameObject);
         }
