@@ -11,13 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private CharacterController characterController;
 
-    private float horizontal, vertical;
+    private Animator animator;
 
+    private float horizontal, vertical;
    
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        animator = GetComponent<Animator>();     
     }
 
     // Update is called once per frame
@@ -32,8 +32,10 @@ public class Player : MonoBehaviour
     {
         if (state == PlayerState.Dead) return;
 
-        horizontal = Input.GetAxis("Horizontal") * rotateSpeed;
-        vertical = Input.GetAxis("Vertical") * movementSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Vertical")));
+
+        horizontal = Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime * 100;
+        vertical = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime * 100;
 
         transform.Rotate(new Vector3(0, horizontal, 0));
 
@@ -43,9 +45,8 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        //characterController.enabled = false;
         state = PlayerState.Dead;
-        //GameController.Instance.OnPlayerDeath();
+        Destroy(gameObject);
+        
     }
-
 }

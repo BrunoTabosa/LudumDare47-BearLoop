@@ -10,6 +10,7 @@ public class GameController : Singleton<GameController>
     [Header("GameController Attributes")]
     public Transform RespawnPoint;
     public Player playerPrefab;
+    public RagdollCharacter ragdollPrefab;
     public Player currentPlayer;
     [SerializeField]
     private float _respawnTime = 3.5f;
@@ -95,6 +96,9 @@ public class GameController : Singleton<GameController>
     public void OnPlayerDeath()
     {
         PlayerIsAlive = false;
+        currentPlayer.gameObject.SetActive(false);
+        var ragdoll = Instantiate(ragdollPrefab, currentPlayer.transform.position, currentPlayer.transform.rotation);
+        ragdoll.head.velocity = currentPlayer.GetComponent<CharacterController>().velocity;
         currentPlayer.Die();
         Respawn();
     }

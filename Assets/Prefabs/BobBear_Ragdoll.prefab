@@ -1370,6 +1370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6056806263721048636}
   - component: {fileID: 211165470249312326}
+  - component: {fileID: -3173387627315023163}
   m_Layer: 0
   m_Name: BobBear_Ragdoll
   m_TagString: Untagged
@@ -1401,9 +1402,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6865114862822121606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 9221331a81baad64d8b348df60eb451e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d07ab0f8e9618b7499fa2e11f185536a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1412,6 +1413,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3173387627315023163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865114862822121606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034441d2afcfa8a418d6fb8bfd2e91ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 6018111240363471853}
+  root: {fileID: 6018111240397163774}
 --- !u!1 &7163505300002686852
 GameObject:
   m_ObjectHideFlags: 0

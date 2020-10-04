@@ -67,7 +67,6 @@ public class CameraManager : Singleton<CameraManager>
 
         GameController.Instance.OnPlayerDies += delegate { PlayCameraAnimation(CameraAnimationType.PlayerDies); };
         GameController.Instance.OnPlayerSpawns += SetUpPlayerFollow;
-        
 
     }
     private void Awake()
