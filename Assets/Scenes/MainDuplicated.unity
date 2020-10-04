@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1289,6 +1289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dontDestroyOnLoad: 1
   timer: {fileID: 811446399}
+  numpad: {fileID: 0}
 --- !u!4 &1601835016
 Transform:
   m_ObjectHideFlags: 0
@@ -1426,7 +1427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851365618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -7.47}
+  m_LocalPosition: {x: 4.68, y: 1, z: -13.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 88525179}
@@ -1591,7 +1592,7 @@ Transform:
   m_GameObject: {fileID: 2069665456}
   m_LocalRotation: {x: -0.00004887393, y: -0.00025719067, z: 0.0007263054, w: 0.99999976}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalScale: {x: 10, y: 0.61409, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1608,6 +1609,7 @@ GameObject:
   - component: {fileID: 2115536561}
   - component: {fileID: 2115536560}
   - component: {fileID: 2115536559}
+  - component: {fileID: 2115536564}
   - component: {fileID: 2115536563}
   m_Layer: 0
   m_Name: InteractableDoor
@@ -1683,14 +1685,31 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115536558}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.72, y: 1.44, z: -6.97}
-  m_LocalScale: {x: 1, y: 3.2208407, z: 4.7254434}
+  m_LocalRotation: {x: 0, y: 0.008726558, z: 0, w: 0.999962}
+  m_LocalPosition: {x: 4.88, y: 1, z: -9.06}
+  m_LocalScale: {x: 4, y: 2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2115536563
+  m_LocalEulerAnglesHint: {x: 0, y: 1, z: 0}
+--- !u!111 &2115536563
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115536558}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: c741bd1b0297b9f49b20c75743583d27, type: 2}
+  - {fileID: 7400000, guid: 044fd605d46065747bec437d8603e34a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &2115536564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1699,9 +1718,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2115536558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06baf787b716d4849a2a3c4df53cfe58, type: 3}
+  m_Script: {fileID: 11500000, guid: 75d7945a7904c36438ca7b1e085c0f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animation: {fileID: 2115536563}
+  InteractClip: {fileID: 7400000, guid: c741bd1b0297b9f49b20c75743583d27, type: 2}
+  CancelInteractClip: {fileID: 7400000, guid: 044fd605d46065747bec437d8603e34a, type: 2}
 --- !u!1001 &9195945960023343818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1768,6 +1790,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195945958495797846, guid: 3751a8df40eb761428ce04694f0429fe,
+        type: 3}
+      propertyPath: InteractablesObjects.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9195945958495797846, guid: 3751a8df40eb761428ce04694f0429fe,
         type: 3}

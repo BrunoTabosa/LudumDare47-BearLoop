@@ -118,6 +118,7 @@ public class GameController : Singleton<GameController>
     private void GenerateKeyCode()
     {
         code = UnityEngine.Random.Range(100, 1000);
+        if (codeText == null) return;
         codeText.text = code.ToString();
     }
 }
