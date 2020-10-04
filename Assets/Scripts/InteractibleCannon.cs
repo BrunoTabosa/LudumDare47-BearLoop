@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class InteractibleCannon : MonoBehaviour, IInteractable
 {
-    private HashSet<RagdollCharacter> _ragdollCharacters = new HashSet<RagdollCharacter>();
+    private RagdollCharacter _ragdollCharacter;
 
     [SerializeField]
     private InteractionColliderDetectioType _interactionColliderDetectioType;
@@ -13,6 +13,30 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
 
     [SerializeField]
     private CollisionListener _collisitonListener;
+
+    [System.Serializable]
+    private struct PhysicsProperties
+    {
+        [SerializeField]
+        private ForceMode _forceMode;
+
+        [SerializeField]
+        private Vector3 _dir;
+
+        [SerializeField]
+        private float _force;
+
+        public ForceMode ForceMode { get => _forceMode; }
+        public Vector3 Dir { get => _dir; }
+        public float Force { get => _force; }
+    }
+    [SerializeField]
+    private PhysicsProperties _physicsProperties;
+
+    [SerializeField]
+    private Transform _ragDollAnchor;
+
+    private Animator _animator;
 
     private void Awake()
     {
@@ -29,6 +53,7 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
         {
             Debug.LogError("InteractibleCannon Requires one collisitonListener", gameObject);
         }
+        _animator = GetComponent<Animator>();
     }
 
     public void CancelInteraction()
@@ -37,12 +62,16 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
     }
     public void AddRagdoll(GameObject gameObject)
     {
-        
+
         var rag = gameObject.GetComponentInParent<RagdollCharacter>();
 
         if (rag != null)
-        {            
-            _ragdollCharacters.Add(rag);
+        {
+            if (_ragdollCharacter != null && rag != _ragdollCharacter)
+            {
+                //Destroy(_ragdollCharacter.gameObject);
+            }
+            _ragdollCharacter = rag;
         }
         else
         {
@@ -53,12 +82,21 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        print("Interacted");
-        foreach (var item in _ragdollCharacters)
+        _animator.SetTrigger("OnActionPress");
+        if (_ragdollCharacter)
         {
-            print("Kabum");
+            _ragdollCharacter.EnableRagDoll(false);
         }
-        _ragdollCharacters.Clear();
+    }
+    private void ThrowRagdoll()
+    {
+        if (_ragdollCharacter)
+        {
+            _ragdollCharacter.root.transform.position = _ragDollAnchor.position;
+            _ragdollCharacter.EnableRagDoll(true);
+            var torso = _ragdollCharacter.Torso;
+            torso.AddForce(_physicsProperties.Force * _physicsProperties.Dir, _physicsProperties.ForceMode);
+        }
     }
 
 }

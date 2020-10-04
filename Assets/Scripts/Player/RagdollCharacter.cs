@@ -6,16 +6,29 @@ public class RagdollCharacter : MonoBehaviour
 {
     public Rigidbody head;
     public Rigidbody root;
+    [SerializeField]
+    private Rigidbody _torso;
 
-    //private void Start()
-    //{
-    //    AddForceOnRoot(Vector3.down * 20);
-    //    transform.Translate(Vector3.up * 1);
-    //}
+    public Rigidbody Torso { get => _torso; }
+
+    private Rigidbody[] _rigidbodies;
+
+    private void Start()
+    {
+        _rigidbodies = GetComponentsInChildren<Rigidbody>();
+
+    }
+    public void EnableRagDoll(bool status)
+    {
+        foreach (var item in _rigidbodies)
+        {
+            item.isKinematic = !status;
+        }
+    }
+
     public void Update()
     {
-        //FOR TESTS ONLY
-        
+
         if (root.transform.position.y <= -15)
         {
             Destroy(gameObject);
