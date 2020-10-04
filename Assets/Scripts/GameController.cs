@@ -4,6 +4,7 @@ using BearLoopGame.Utils;
 using UnityEngine.Events;
 using System;
 using JetBrains.Annotations;
+using TMPro;
 
 public class GameController : Singleton<GameController>
 {
@@ -11,7 +12,8 @@ public class GameController : Singleton<GameController>
     public Transform RespawnPoint;
     public Player playerPrefab;
     public RagdollCharacter ragdollPrefab;
-    public Player currentPlayer;
+    public TextMeshPro codeText;
+    private Player currentPlayer;
     [SerializeField]
     private float _respawnTime = 3.5f;
 
@@ -45,6 +47,7 @@ public class GameController : Singleton<GameController>
             Destroy(currentPlayer.gameObject);
         }
         SpawnPlayer();
+        GenerateKeyCode();
     }
 
     public void Update()
@@ -108,8 +111,14 @@ public class GameController : Singleton<GameController>
     {
         if(value == code.ToString())
         {
-            
+            Debug.Log("Code Correct");
         }
+    }
+
+    private void GenerateKeyCode()
+    {
+        code = UnityEngine.Random.Range(100, 1000);
+        codeText.text = code.ToString();
     }
 }
 
