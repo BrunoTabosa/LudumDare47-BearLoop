@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: f17355163c396b44fbf38ed5bfaee4bb
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 5813422878837142802
+    second: canhao.0002
+  - first:
+      74: -6971755702913939616
+    second: canhao.0003
   externalObjects: {}
   materials:
     materialImportMode: 1
