@@ -11,6 +11,7 @@ public class UIController : Singleton<UIController>
     public TextMeshProUGUI timer;
     private TimeSpan timeSpan;
     public UINumpad numpad;
+    public GameObject tutorial;
 
     protected override void InitSingleton()
     {
@@ -26,5 +27,10 @@ public class UIController : Singleton<UIController>
     public void NumpadToggle(bool value)
     {
         numpad.SetEnabled(value);
+    }
+
+    public void TutorialToggle(bool value)
+    {
+        tutorial.SetActive(value);
     }
 }

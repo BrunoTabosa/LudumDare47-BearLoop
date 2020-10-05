@@ -50,8 +50,16 @@ public class GameController : Singleton<GameController>
         {
             Destroy(currentPlayer.gameObject);
         }
-        SpawnPlayer();
+      
         GenerateKeyCode();
+        StartCoroutine(StartGame());
+    }
+
+    IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(4f);
+        UIController.Instance.TutorialToggle(false);
+        SpawnPlayer();
     }
 
     public void Update()
@@ -128,6 +136,13 @@ public class GameController : Singleton<GameController>
         if (codeText == null) return;
         codeText.text = code.ToString();
         print($"code: {code}");
+    }
+
+    public void GameEnd()
+    {
+        PlayerIsAlive = false;
+        currentPlayer.EndGameAction();
+
     }
 }
 

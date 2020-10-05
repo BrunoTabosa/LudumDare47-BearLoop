@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
+        characterController.SimpleMove(transform.TransformDirection(Vector3.forward) * vertical);
         if (state == PlayerState.Dead || _isInteracting == true) return;
 
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Vertical")));
@@ -45,7 +46,6 @@ public class Player : MonoBehaviour
 
         transform.Rotate(new Vector3(0, horizontal, 0));
 
-        characterController.SimpleMove(transform.TransformDirection(Vector3.forward) * vertical);
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -71,7 +71,13 @@ public class Player : MonoBehaviour
     {
         state = PlayerState.Dead;
         Destroy(gameObject);
+    }
 
+    public void EndGameAction()
+    {
+        state = PlayerState.Dead;
+        vertical = 2f;
+        transform.LookAt(transform.position + Vector3.right);
     }
 
 }

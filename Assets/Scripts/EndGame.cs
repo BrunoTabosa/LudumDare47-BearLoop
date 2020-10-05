@@ -6,6 +6,9 @@ public class EndGame : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.tag == "Player")
+        {
+            GameController.Instance.GameEnd();
+        }
     }
 }
