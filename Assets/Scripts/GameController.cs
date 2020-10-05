@@ -32,6 +32,9 @@ public class GameController : Singleton<GameController>
 
     public GameObject NumpadDoor;
 
+    public AudioSource audioSource_bgm;
+    public AudioSource audioSource_scream;
+
     private void Awake()
     {
         InitSingleton();
@@ -81,7 +84,8 @@ public class GameController : Singleton<GameController>
         currentPlayer = Instantiate(playerPrefab, RespawnPoint.position, Quaternion.identity);
         PlayerIsAlive = true;
         currentLifeSpan = lifeSpan;
-        OnPlayerSpawns?.Invoke(currentPlayer.transform);
+        OnPlayerSpawns?.Invoke(currentPlayer.transform);                
+        audioSource_bgm.Play();
     }
 
     public void HandleLifeSpan()
@@ -106,6 +110,8 @@ public class GameController : Singleton<GameController>
         var ragdoll = Instantiate(ragdollPrefab, currentPlayer.transform.position, currentPlayer.transform.rotation);
         ragdoll.head.velocity = currentPlayer.GetComponent<CharacterController>().velocity;
         currentPlayer.Die();
+        audioSource_bgm.Stop();
+        audioSource_scream.Play();
         Respawn();
     }
     public void EnterCode(string value)

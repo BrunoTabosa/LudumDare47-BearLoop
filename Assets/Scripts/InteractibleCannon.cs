@@ -14,6 +14,9 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
     [SerializeField]
     private CollisionListener _collisitonListener;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     [System.Serializable]
     private struct PhysicsProperties
     {
@@ -82,6 +85,7 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        audioSource.Play();
         _animator.SetTrigger("OnActionPress");
         if (_ragdollCharacter)
         {
@@ -96,6 +100,7 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
             _ragdollCharacter.EnableRagDoll(true);
             var torso = _ragdollCharacter.Torso;
             torso.AddForce(_physicsProperties.Force * _physicsProperties.Dir, _physicsProperties.ForceMode);
+            
         }
     }
 

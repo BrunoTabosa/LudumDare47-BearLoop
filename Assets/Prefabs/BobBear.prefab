@@ -152,6 +152,7 @@ MonoBehaviour:
   state: 0
   characterController: {fileID: 1553888115732364612}
   _interactionObject: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!136 &4110922695231043589
 CapsuleCollider:
   m_ObjectHideFlags: 0
