@@ -30,6 +30,7 @@ public class GameController : Singleton<GameController>
 
     private int code = 123;
 
+    public GameObject NumpadDoor;
 
     private void Awake()
     {
@@ -111,7 +112,7 @@ public class GameController : Singleton<GameController>
     {
         if(value == code.ToString())
         {
-            Debug.Log("Code Correct");
+            NumpadDoor.GetComponent<IInteractable>().Interact();
         }
     }
 
