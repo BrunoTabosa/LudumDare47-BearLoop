@@ -20,6 +20,9 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
     [SerializeField]
     private AudioSource audioSource_shoot;
 
+    [SerializeField]
+    private AudioSource audioSource_empty_shoot;
+
     [System.Serializable]
     private struct PhysicsProperties
     {
@@ -97,15 +100,17 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
     }
     private void ThrowRagdoll()
     {
-        audioSource_shoot.Play();
-
         if (_ragdollCharacter)
         {
+            audioSource_shoot.Play();
             _ragdollCharacter.root.transform.position = _ragDollAnchor.position;
             _ragdollCharacter.EnableRagDoll(true);
             var torso = _ragdollCharacter.Torso;
             torso.AddForce(_physicsProperties.Force * _physicsProperties.Dir, _physicsProperties.ForceMode);
-            
+        }
+        else
+        {
+            audioSource_empty_shoot.Play();
         }
     }
 
