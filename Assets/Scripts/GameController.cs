@@ -39,6 +39,9 @@ public class GameController : Singleton<GameController>
     public AudioSource audioSource_bgm;
     public AudioSource audioSource_scream;
 
+    public AudioSource audioSource_numPadCorrect;
+    public AudioSource audioSource_numPadWrong;
+
     private void Awake()
     {
         InitSingleton();
@@ -130,8 +133,14 @@ public class GameController : Singleton<GameController>
     {
         if (value == code.ToString())
         {
+            audioSource_numPadCorrect.Play();
             NumpadDoor.GetComponent<IInteractable>().Interact();
         }
+        else
+        {
+            audioSource_numPadWrong.Play();
+        }
+        
     }
 
     private void GenerateKeyCode()

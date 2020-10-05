@@ -18,7 +18,7 @@ public class AnimatedInteractable : MonoBehaviour, IInteractable
 
     public void CancelInteraction()
     {
-        currentActions = 0;
+        currentActions--;
         if (CancelInteractClip)
         {
             animation.clip = CancelInteractClip;
