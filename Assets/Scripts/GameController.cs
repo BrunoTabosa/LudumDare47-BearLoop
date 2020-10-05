@@ -73,7 +73,7 @@ public class GameController : Singleton<GameController>
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (PlayerIsAlive && Input.GetKeyDown(KeyCode.Space))
         {
             OnPlayerDeath();
         }

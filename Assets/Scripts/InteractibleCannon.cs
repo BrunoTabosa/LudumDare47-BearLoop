@@ -97,9 +97,10 @@ public class InteractibleCannon : MonoBehaviour, IInteractable
     }
     private void ThrowRagdoll()
     {
+        audioSource_shoot.Play();
+
         if (_ragdollCharacter)
         {
-            audioSource_shoot.Play();
             _ragdollCharacter.root.transform.position = _ragDollAnchor.position;
             _ragdollCharacter.EnableRagDoll(true);
             var torso = _ragdollCharacter.Torso;
