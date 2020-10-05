@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public float rotateSpeed;
     public PlayerState state;
 
+    public RandomAudioClipsController footstepRandomAudioClipsController;
+
     [SerializeField]
     private CharacterController characterController;
 
@@ -78,6 +80,11 @@ public class Player : MonoBehaviour
         state = PlayerState.Dead;
         vertical = 2f;
         transform.LookAt(transform.position + Vector3.right);
+    }
+
+    private void OnFootstep()
+    {
+        footstepRandomAudioClipsController.PlayOneShot();
     }
 
 }
