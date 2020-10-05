@@ -37,7 +37,9 @@ public class GameController : Singleton<GameController>
     public GameObject NumpadDoor;
 
     public AudioSource audioSource_bgm;
-    public AudioSource audioSource_scream;
+    //public AudioSource audioSource_scream;
+
+    public RandomAudioClipsController playerDeathRandomAudioClipsController;
 
     public AudioSource audioSource_numPadCorrect;
     public AudioSource audioSource_numPadWrong;
@@ -126,7 +128,8 @@ public class GameController : Singleton<GameController>
         ragdoll.head.velocity = currentPlayer.GetComponent<CharacterController>().velocity;
         currentPlayer.Die();
         audioSource_bgm.Stop();
-        audioSource_scream.Play();
+        //audioSource_scream.Play();
+        playerDeathRandomAudioClipsController.PlayOneShot();
         Respawn();
     }
     public void EnterCode(string value)
