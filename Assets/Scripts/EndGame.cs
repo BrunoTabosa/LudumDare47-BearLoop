@@ -6,6 +6,6 @@ public class EndGame : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GameController.Instance.EndGame();
+        
     }
 }
