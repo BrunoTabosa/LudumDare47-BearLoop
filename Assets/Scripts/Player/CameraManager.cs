@@ -12,6 +12,7 @@ public class CameraManager : Singleton<CameraManager>
     {
         PlayerSpawn,
         PlayerDies,
+        PlayerWins
 
     }
     [System.Serializable]
@@ -42,7 +43,7 @@ public class CameraManager : Singleton<CameraManager>
     [SerializeField]
     private CinemachineVirtualCamera _virtualCamera;
     private Coroutine _currentlyRunningCoroutine = null;
-    private CameraAnimationStructure _currentAnimationStructure;    
+    private CameraAnimationStructure _currentAnimationStructure;
     [SerializeField]
     private PlayableDirector _directorControlPlayable;
 
@@ -67,6 +68,8 @@ public class CameraManager : Singleton<CameraManager>
 
         GameController.Instance.OnPlayerDies += delegate { PlayCameraAnimation(CameraAnimationType.PlayerDies); };
         GameController.Instance.OnPlayerSpawns += SetUpPlayerFollow;
+        GameController.Instance.OnPlayerWins += delegate { PlayCameraAnimation(CameraAnimationType.PlayerWins); };
+
 
     }
     private void Awake()

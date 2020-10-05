@@ -23,6 +23,9 @@ public class GameController : Singleton<GameController>
     public delegate void OnPlayerDiesEvent(Transform player);
     public OnPlayerDiesEvent OnPlayerDies;
 
+    public delegate void OnPlayerWinsEvent(Transform player);
+    public OnPlayerWinsEvent OnPlayerWins;
+
     private bool PlayerIsAlive = false;
 
     private float currentLifeSpan;
@@ -50,7 +53,7 @@ public class GameController : Singleton<GameController>
         {
             Destroy(currentPlayer.gameObject);
         }
-      
+
         GenerateKeyCode();
         StartCoroutine(StartGame());
     }
@@ -92,7 +95,7 @@ public class GameController : Singleton<GameController>
         currentPlayer = Instantiate(playerPrefab, RespawnPoint.position, Quaternion.identity);
         PlayerIsAlive = true;
         currentLifeSpan = lifeSpan;
-        OnPlayerSpawns?.Invoke(currentPlayer.transform);                
+        OnPlayerSpawns?.Invoke(currentPlayer.transform);
         audioSource_bgm.Play();
     }
 
@@ -124,7 +127,7 @@ public class GameController : Singleton<GameController>
     }
     public void EnterCode(string value)
     {
-        if(value == code.ToString())
+        if (value == code.ToString())
         {
             NumpadDoor.GetComponent<IInteractable>().Interact();
         }
@@ -140,6 +143,7 @@ public class GameController : Singleton<GameController>
 
     public void GameEnd()
     {
+        OnPlayerWins?.Invoke(currentPlayer.transform);
         PlayerIsAlive = false;
         currentPlayer.EndGameAction();
 

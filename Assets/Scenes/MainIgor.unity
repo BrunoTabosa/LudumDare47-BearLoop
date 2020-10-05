@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7440,7 +7440,7 @@ PrefabInstance:
     - target: {fileID: 6796124345066661915, guid: 512641f84d0914a48935ff916c84bf53,
         type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6796124345066661915, guid: 512641f84d0914a48935ff916c84bf53,
         type: 3}
@@ -7457,7 +7457,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlayableAsset
       value: 
-      objectReference: {fileID: 11400000, guid: f2cca5023b70ebe459ec10ff88563a0b,
+      objectReference: {fileID: 11400000, guid: b4dc8cfe24fecca47af5a89eeb95d1bc,
         type: 2}
     - target: {fileID: 6796124345066661915, guid: 512641f84d0914a48935ff916c84bf53,
         type: 3}
@@ -7479,6 +7479,28 @@ PrefabInstance:
     - target: {fileID: 6796124345066661915, guid: 512641f84d0914a48935ff916c84bf53,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[5].value
+      value: 
+      objectReference: {fileID: 15661476}
+    - target: {fileID: 6796124345066661915, guid: 512641f84d0914a48935ff916c84bf53,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[6].key
+      value: 
+      objectReference: {fileID: -1099921856481068573, guid: b4dc8cfe24fecca47af5a89eeb95d1bc,
+        type: 2}
+    - target: {fileID: 6796124345066661915, guid: 512641f84d0914a48935ff916c84bf53,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[7].key
+      value: 
+      objectReference: {fileID: -3067995763801814690, guid: b4dc8cfe24fecca47af5a89eeb95d1bc,
+        type: 2}
+    - target: {fileID: 6796124345066661915, guid: 512641f84d0914a48935ff916c84bf53,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[6].value
+      value: 
+      objectReference: {fileID: 1789892775}
+    - target: {fileID: 6796124345066661915, guid: 512641f84d0914a48935ff916c84bf53,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[7].value
       value: 
       objectReference: {fileID: 15661476}
     - target: {fileID: 6796124345066661916, guid: 512641f84d0914a48935ff916c84bf53,
@@ -10447,7 +10469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702199935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.29, y: 2, z: -19.64}
+  m_LocalPosition: {x: 60.15, y: 2, z: -2.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 307000615}
@@ -14694,6 +14716,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4577451374519692532, guid: 97e55df688ad33e4da6dda4c62ebecee,
         type: 3}
+      propertyPath: _cameraAnimationStructures.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577451374519692532, guid: 97e55df688ad33e4da6dda4c62ebecee,
+        type: 3}
       propertyPath: _virtualCamera
       value: 
       objectReference: {fileID: 2061979333}
@@ -14708,6 +14735,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f2cca5023b70ebe459ec10ff88563a0b,
         type: 2}
+    - target: {fileID: 4577451374519692532, guid: 97e55df688ad33e4da6dda4c62ebecee,
+        type: 3}
+      propertyPath: _cameraAnimationStructures.Array.data[2]._name
+      value: Player Wins Time Line
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577451374519692532, guid: 97e55df688ad33e4da6dda4c62ebecee,
+        type: 3}
+      propertyPath: _cameraAnimationStructures.Array.data[2]._timeLineAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b4dc8cfe24fecca47af5a89eeb95d1bc,
+        type: 2}
+    - target: {fileID: 4577451374519692532, guid: 97e55df688ad33e4da6dda4c62ebecee,
+        type: 3}
+      propertyPath: _cameraAnimationStructures.Array.data[2]._transitionTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577451374519692532, guid: 97e55df688ad33e4da6dda4c62ebecee,
+        type: 3}
+      propertyPath: _cameraAnimationStructures.Array.data[2]._blendType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4577451374519692533, guid: 97e55df688ad33e4da6dda4c62ebecee,
         type: 3}
       propertyPath: m_LocalPosition.x
