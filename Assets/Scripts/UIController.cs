@@ -12,6 +12,7 @@ public class UIController : Singleton<UIController>
     private TimeSpan timeSpan;
     public UINumpad numpad;
     public GameObject tutorial;
+    public GameObject EndGame;
 
     protected override void InitSingleton()
     {
@@ -32,5 +33,10 @@ public class UIController : Singleton<UIController>
     public void TutorialToggle(bool value)
     {
         tutorial.SetActive(value);
+    }
+
+    public void EndGameToggle(bool value)
+    {
+        EndGame.SetActive(value);
     }
 }

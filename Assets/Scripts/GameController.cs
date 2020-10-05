@@ -6,6 +6,7 @@ using System;
 using JetBrains.Annotations;
 using TMPro;
 
+
 public class GameController : Singleton<GameController>
 {
     [Header("GameController Attributes")]
@@ -146,6 +147,7 @@ public class GameController : Singleton<GameController>
         OnPlayerWins?.Invoke(currentPlayer.transform);
         PlayerIsAlive = false;
         currentPlayer.EndGameAction();
+        UIController.Instance.EndGameToggle(true);
 
     }
 }
