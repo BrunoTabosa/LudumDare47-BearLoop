@@ -8,15 +8,18 @@ public class AnimatedInteractable : MonoBehaviour, IInteractable
     public AnimationClip InteractClip;
     public AnimationClip CancelInteractClip;
 
+    public int ActionsRequired = 1;
+    private int currentActions = 0;
+
     void Start()
     {
-        //animation.AddClip(InteractClip, InteractClip.name);
-        //animation.AddClip(CancelInteractClip, CancelInteractClip.name);
+        currentActions = 0;
     }
 
     public void CancelInteraction()
     {
-        if(CancelInteractClip)
+        currentActions = 0;
+        if (CancelInteractClip)
         {
             animation.clip = CancelInteractClip;
             animation.Play();
@@ -25,6 +28,8 @@ public class AnimatedInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        currentActions++;
+        if (currentActions < ActionsRequired) return;
         if (InteractClip)
         {
             animation.clip = InteractClip;

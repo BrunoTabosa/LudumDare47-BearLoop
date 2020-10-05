@@ -121,6 +121,7 @@ public class GameController : Singleton<GameController>
         code = UnityEngine.Random.Range(100, 1000);
         if (codeText == null) return;
         codeText.text = code.ToString();
+        print($"code: {code}");
     }
 }
 
