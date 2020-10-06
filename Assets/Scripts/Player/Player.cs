@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         _isInteracting = !_isInteracting;
         if (_isInteracting == false)
         {
-            _interactionObject.Interact();
+            _interactionObject?.Interact();
         }
     }
 
